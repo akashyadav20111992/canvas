@@ -20,15 +20,13 @@
   var imageData = ctx.getImageData(0, 0, 500, 500);
   var numPixels = imageData.data.length/4;
   for(var i=0;i<numPixels;i++){
-    /*var red = imageData.data[i*4+0];
+    var red = imageData.data[i*4+0];
     var green = imageData.data[i*4+1];
     var blue = imageData.data[i*4+2];
-    var gray = (red+green+blue)/3;*/
-    imageData.data[i*4+0] = 000;
-    imageData.data[i*4+1] = 000;
-    imageData.data[i*4+2] = 000;
-    imageData.data[i*4+3] = 255;
-    //console.log("*")
+    var gray = (red+green+blue)/3;
+    imageData.data[i*4+0] = gray;
+    imageData.data[i*4+1] = gray;
+    imageData.data[i*4+2] = gray;
 
   }
   ctx.putImageData(imageData, 0, 0);
