@@ -15,21 +15,23 @@
   image.onload = function(){
     console.log("image loaded");
     ctx.drawImage(image, 0, 0, c.height, c.width);
+    imageGrayScale();
   }
   image.src = "myimg.jpg";
-  var imageData = ctx.getImageData(0, 0, 500, 500);
-  var numPixels = imageData.data.length/4;
-  for(var i=0;i<numPixels;i++){
-    var red = imageData.data[i*4+0];
-    var green = imageData.data[i*4+1];
-    var blue = imageData.data[i*4+2];
-    var gray = (red+green+blue)/3;
-    imageData.data[i*4+0] = gray;
-    imageData.data[i*4+1] = gray;
-    imageData.data[i*4+2] = gray;
-
+  function imageGrayScale(){
+    var imageData = ctx.getImageData(0, 0, 500, 500);
+    var numPixels = imageData.data.length/4;
+    for(var i=0;i<numPixels;i++){
+      var red = imageData.data[i*4+0];
+      var green = imageData.data[i*4+1];
+      var blue = imageData.data[i*4+2];
+      var gray = (red+green+blue)/3;
+      imageData.data[i*4+0] = gray;
+      imageData.data[i*4+1] = gray;
+      imageData.data[i*4+2] = gray;
+    }
+    ctx.putImageData(imageData, 0, 0);
   }
-  ctx.putImageData(imageData, 0, 0);
   </script>
 </body>
 </html>
